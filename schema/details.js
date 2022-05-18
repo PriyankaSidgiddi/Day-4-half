@@ -39,37 +39,46 @@
      required: true
    },
  
-   /**
-    * To declare a path as a number, you may use either the Number global constructor or the string 'Number'.
-    * @SchemaType - Number
-    * The number schema type consists of the built-in validators as:
-    * min, max
-    */
+   
  
    address: {
      type: String,
-     lowercase: true
-   },
- 
-   /**
-    * @SchemaType - Number
-    */
- 
-   phone: {
-     type: Number,
      required: true
    },
- 
+
    /**
     * Date is a built in type.
     * The default values can be given to the schema type as Date.now, Date.UTC
     * @SchemaType - Date
     */
  
-   dob: {
-     type: Date,
-     required: true
+   //dob: {
+    //  type: Date,
+    //  default: Date.now,
+    //  trim: true
+  //   day: {
+  //     type: Number
+  //   },
+  //   month: {
+  //     type: Number
+  //   },
+  //   year: {
+  //     type: Number
+  //   }
+  //  },
+  dob: {
+    type: String,
+    required: true
+  },
+
+  /**
+    * @SchemaType - Number
+    */
+ 
+   phone: {
+     type: Number
    },
+ 
  
  });
  

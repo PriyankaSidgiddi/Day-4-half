@@ -4,6 +4,8 @@
 
  const { detailSchema } = require("../schema/details");
 
+ const moment = require('moment')
+
  /**
   * Instance methods: These are the methods which are used to manipulate the individual document.
   */
@@ -11,32 +13,13 @@
    return this.age > 18;
  };
  
- //Create an instance method to check if a person has birthday today.
- 
-//  detailSchema.methods.findBirthdayToday = function () {
-//    return (this.day == 2 && this.month == 1) ? true : false
- 
-//  }
-
-// detailSchema.methods.findBirthdayToday = function (err, data) {
-//   var today = moment("DD,MMMM,YYYY");
-//   return today == this.dob;
-
-// };
-
  /**
   * Static methods: These are the methods which are used to query the whole collection.
   * - Add a function property to schema.statics
   */
-//  detailSchema.statics.findByAge = function (age, callback) {
-//    this.find({ age: age }, callback);
-//  };
- 
- //Create a static method to fetch all users who are having birthday today.
- 
-//  detailSchema.statics.findAllBirthdayToday = function (day,month, callback) {
-//    this.find({ day: day, month: month}, callback);
-//  };
+ detailSchema.statics.findByAge = function (age, callback) {
+   this.find({ age: age }, callback);
+ };
  
  /**
   * Static methods
@@ -56,5 +39,18 @@
  
 
 
+ detailSchema.methods.getIfBday = function () {
+  var today = moment().format('YYYY-MM-DD');
+  return today == this.dob
+}
 
- 
+detailSchema.methods.getAllBday = function () {
+  var arr = []
+  var today = moment().format('YYYY-MM-DD');
+  today == this.dob
+}
+
+
+detailSchema.static("findByLastName", function (dob, callback) {
+  this.find({ dob: dob }, callback);
+});

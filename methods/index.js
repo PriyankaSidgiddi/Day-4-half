@@ -11,12 +11,6 @@ userSchema.methods.getIfAdult = function () {
   return this.age > 18;
 };
 
-//Create an instance method to check if a person has birthday today.
-
-userSchema.methods.findBirthdayToday = function () {
-  return (this.day == 2 && this.month == 1) ? true : false
-
-}
 /**
  * Static methods: These are the methods which are used to query the whole collection.
  * - Add a function property to schema.statics
@@ -24,13 +18,6 @@ userSchema.methods.findBirthdayToday = function () {
 userSchema.statics.findByAge = function (age, callback) {
   this.find({ age: age }, callback);
 };
-
-//Create a static method to fetch all users who are having birthday today.
-
-userSchema.statics.findAllBirthdayToday = function (day,month, callback) {
-  this.find({ day: day, month: month}, callback);
-};
-
 
 /**
  * Static methods
